@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>내 프로젝트</title>
+  </head>
+  <body>
+    <!-- header는 페이지의 제일 윗부분을 의미 -->
+    <header>
+      <!-- form태그는 action이 존재한다 하지만 자바스크립트,CSS로 action을 주기 때문에 HTML에서 생략해도 괜찮음(?) -->
+      <form id="form">
+        <input type="text" id="search" class="search" placeholder="영화 검색" />
+      </form>
+    </header>
+
+    <main id="main">
+      <!-- class movie는 하나의 영화를 의미 -->
+      <div class="movie">
+        <img
+          src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+          alt=""
+        />
+        <div class="movie-info">
+          <h3>영화 제목</h3>
+          <span class="green">9.8</span>
+        </div>
+        <div class="overview">
+          <!-- 상세보기는 처음에는 안 보이다가 마우스를 올리면 보일 수 있도록 함 -->
+          <h3>상세 보기</h3>
+          <!-- lorem자동완성 기능 씀 -->
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat corrupti necessitatibus
+          nulla ea obcaecati dolor sit accusamus, quo tenetur incidunt expedita? Illo minus fuga
+          voluptatem repudiandae reiciendis quas, voluptas earum?
+        </div>
+      </div>  
+    <script src="script.js"></script>
+  </body>
+</html>

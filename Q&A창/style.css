@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  margin: 50px 0 30px;
+  text-align: center;
+}
+
+.faq-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.faq {
+  background-color: transparent;
+  border: 1px solid #9fa4a8;
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+/* active : 마우스가 해당 요소를 클릭하는 순간부터 떼는 순간까지 요소의 스타일 변경 */
+.faq.active {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* before와 after는 생성된 콘텐츠의 내부에 삽입, 보통 이미지나 글, 그라데이션을 삽입 */
+/* 지금 이 project에서 문제클래스 답클래스 둘 다에 아이콘을 넣는 거라서 active::before, after를 같이 써줌 */
+.faq.active::before,
+.faq.active::after {
+  /* \f075 */
+  content: '🧡';
+  font-family: 'Font Awesome 5 Free';
+  color: #2ecc71;
+  font-size: 7rem;
+  position: absolute;
+  opacity: 0.2;
+  top: 20px;
+  left: 20px;
+  z-index: 0;
+}
+
+/* before의 위치를 따로 지정해주지 않으면 문제클래스와 답클래스가 겹쳐지게 되기 때문에 조정함 */
+.faq.active::before {
+  color: #3498db;
+  top: -10px;
+  left: -30px;
+  transform: rotateY(180deg);
+}
+
+.faq-title {
+  margin: 0 35px 0 0;
+}
+
+/* 답변은 기본적으로 안 보이게 */
+.faq-text {
+  display: none;
+  margin: 30px 0 0;
+}
+
+/* active클래스가 있으면 답변이 보이게 */
+.faq.active .faq-text {
+  display: block;
+}
+
+/* i태그에 관한 CSS */
+.faq-toggle {
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 0;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 30px;
+  width: 30px;
+}
+
+.faq-toggle:focus {
+  outline: 0;
+}
+
+.faq-toggle .fa-times {
+  display: none;
+}
+
+.faq.active .faq-toggle .fa-times {
+  color: #fff;
+  display: block;
+}
+
+.faq.active .faq-toggle .fa-chevron-down {
+  display: none;
+}
+
+.faq.active .faq-toggle {
+  background-color: #9fa4a8;
+}

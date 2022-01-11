@@ -1,0 +1,31 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Gowun+Batang&family=Gugi&display=swap');
+body {
+  font-family: 'Cute Font', cursive;
+  font-family: 'Gowun Batang', serif;
+  font-family: 'Gugi', cursive;
+} */
+/* cursive는 기본폰트 가져온 폰트가 제대로 작동이 안 될 시 작동 */
+/* 눈누 폰트 */
+@font-face {
+  font-family: '양진체';
+  src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* border-box를 해주지 않으면 넓이 값이 padding값이 더해져서 내가 원하는 결과가 안 나오기 때문에 border-box로애초에 border까지의 사이즈로 맞춰줌 */
+
+body {
+  font-family: '양진체', 'cursive';
+  display: flex; /*하위태그들을 정렬시킴(가로로 정렬됨)*/
+  flex-direction: column; /*세로 정렬*/
+  justify-content: center; /*가로방향정렬*/
+  align-items: center; /*세로방향정렬*/ /*가로 세로 다 center로 맞춰주면 화면 정중앙에 위치하게 됨*/
+  height: 100vh; /*vh는 화면의 %*/
+  overflow: hidden;
+  margin: 0;
+}

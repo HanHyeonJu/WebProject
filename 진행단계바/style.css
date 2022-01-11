@@ -1,0 +1,109 @@
+@font-face {
+  font-family: '양진체';
+  src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* CSS 변수 : 색깔등을 자주 사용할경우 변수 설정*/
+:root {
+  --line-fill: #3498db; /*색이 들어갔을 때*/
+  --line-empty: #e0e0e0; /*색이 안 들어갔을 때*/
+}
+
+* {
+  box-sizing: border-box;
+}
+/* border-box를 해주지 않으면 넓이 값이 padding값이 더해져서 내가 원하는 결과가 안 나오기 때문에 border-box로애초에 border까지의 사이즈로 맞춰줌 */
+
+body {
+  background: #f6f7fb;
+  font-family: '양진체', 'cursive';
+  display: flex; /*하위태그들을 정렬시킴(가로로 정렬됨)*/
+  justify-content: center;
+  align-items: center; /*세로방향정렬*/ /*가로 세로 다 center로 맞춰주면 화면 정중앙에 위치하게 됨*/
+  height: 100vh; /*vh는 화면의 %*/
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px; /*사이간격*/
+  min-width: 350px; /*가로길이(?)*/
+}
+
+/* 진행상태 바 */
+.progress-container::before {
+  /*::before는 그 태그 앞에 프로그레스 컨테이너 앞에 뭘 만들어준다는 뜻*/
+  content: '';
+  background-color: var(--line-empty);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%); /* 가운데 보정 */
+  height: 4px;
+  width: 100%;
+  z-index: -1; /*겹였을 때 기본z인덱스는 0 그래서 1로 하면 항상 위로 감*/
+}
+
+.progress {
+  background-color: var(--line-fill);
+  position: absolute; /*기준에 따라 위치*/
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%); /* 가운데 보정 */
+  height: 4px;
+  width: 0%; /*자바스크립트로 변경*/
+  z-index: -1;
+  transition: 0.4s ease;
+}
+
+.circle {
+  background-color: white;
+  color: #999; /*헥사16진수 #FFF = #FFFFFF 흰색, #000 => #000000 검은색*/
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  border: 3px solid var(--line-empty);
+  transition: all 0.4s ease;
+}
+
+/* 서클과 액티브 클래스가 동시에 있을 경우 */
+.circle.active {
+  border-color: var(--line-fill);
+}
+
+/* 버튼 */
+.btn {
+  background-color: var(--line-fill);
+  color: white;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px 30px; /* 패딩 마진 2개 일 때 1.위아래 2.좌우*/
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn.active {
+  transform: scale(0.98); /*버튼을 누르면 active => 사이즈를 98%로*/
+}
+
+.btn:focus {
+  outline: 0; /* 보기좋게 아웃라인 제거*/
+}
+
+.btn:disabled {
+  background-color: var(--line-empty);
+  cursor: not-allowed;
+}

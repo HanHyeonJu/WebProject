@@ -1,0 +1,80 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Gowun+Batang&family=Gugi&display=swap');
+body {
+  font-family: 'Cute Font', cursive;
+  font-family: 'Gowun Batang', serif;
+  font-family: 'Gugi', cursive;
+} */
+/* cursive는 기본폰트 가져온 폰트가 제대로 작동이 안 될 시 작동 */
+/* 눈누 폰트 */
+@font-face {
+  font-family: '양진체';
+  src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* border-box를 해주지 않으면 넓이 값이 padding값이 더해져서 내가 원하는 결과가 안 나오기 때문에 border-box로애초에 border까지의 사이즈로 맞춰줌 */
+
+body {
+  font-family: '양진체', 'cursive';
+  display: flex; /*하위태그들을 정렬시킴(가로로 정렬됨)*/
+  justify-content: center; /*가로방향정렬*/
+  align-items: center; /*세로방향정렬*/ /*가로 세로 다 center로 맞춰주면 화면 정중앙에 위치하게 됨*/
+  height: 100vh; /*vh는 화면의 %*/
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex; /* 기본 가로 정렬*/
+  width: 90vw; /* 화면의 90% 너비*/
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  flex: 0.5; /*플렉스 비율*/
+  margin: 10px;
+  position: relative; /*position 기준*/
+  /* 트랜지션 모든 변화에 시간 0.7s */
+  transition: all 0.7s ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0; /*투명도 0(안보임)~1*/
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1; /*글자가 보이게*/
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+/*미디어쿼리 화면이 480이하 적용*/
+@media (max-width: 480px) {
+  .container {
+    /*화면을 100% 너비*/
+    width: 100vw;
+  }
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none; /* 4, 5번째 안 보이게*/
+  }
+}

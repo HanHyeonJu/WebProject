@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+:root {
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* flex 정렬 다 빼주고 폰트와 색깔만 설정 */
+  background-color: var(
+    --primary-color
+  ); /* css의 변수는 무조건 var이기 때문에 var로 root의 색을 가져와서 설정해줌*/
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+header {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end; /*맨 오른쪽 정렬*/
+  background-color: var(--secondary-color);
+}
+
+.search {
+  background-color: transparent; /*바탕색을 투명하게 만듬*/
+  border: 2px solid var(--primary-color); /**/
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+}
+
+/* placeholder: input창을 미리 표시하는 글씨 */
+.search::placeholder {
+  color: #7378c5;
+}
+
+/* 검색 입력 창(input창)을 클릭했을 때 입력창의 색이 바뀜 */
+.search:focus {
+  outline: none;
+  background-color: var(--primary-color);
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap; /* 영화가 추가되었을 때 자동으로 줄 맞춰서 내려오게 함*/
+  justify-content: center;
+}
+
+.movie {
+  width: 300px;
+  margin: 1rem;
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.movie img {
+  width: 100%;
+  height: 450px;
+}
+
+.movie-info {
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem;
+  padding: 0.5rem 1rem 1rem;
+  letter-spacing: 0.5px;
+}
+
+.movie-info h3 {
+  margin: 0 auto;
+}
+
+.movie-info span {
+  background-color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* 클래스(영화)의 점수에 따라 색을 다르게 입력 */
+.movie-info span.green {
+  color: lightgreen;
+}
+
+.movie-info span.orange {
+  color: orange;
+}
+
+.movie-info span.red {
+  color: red;
+}
+
+.overview {
+  background-color: #fff;
+  padding: 2rem;
+  position: absolute; /*absolute를 줘서 위치를 movie와 겹쳐지게 함*/
+  left: 0;
+  bottom: 0;
+  right: 0; /* left, bottom, right를 0으로 설정해서 movie의 밑부분부터 시작하게 함(?)*/
+  max-height: 100%;
+  transform: translateY(
+    101%
+  ); /* Y축 아래로 101% 이동하게 만들어서 보이지 않게 만듬*/
+  overflow-y: auto;
+  transition: transform 0.3s ease-in; /* transform을 자연스럽게 움직여 보이게 하기 위해여 transition을 넣어줌*/
+}
+
+.movie:hover .overview {
+  /* movie:hover 즉 movie의 마우스를 올렸을 때 overview가 원래 위치로 이동하게 함(보이게함)*/
+  transform: translateY(0);
+}
+/* 원래위치는 overview에서 left, bottom, right설정해 놓은 위치를 말함 */

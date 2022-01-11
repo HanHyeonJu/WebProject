@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+  box-sizing: border-box;
+}
+/* border-box를 해주지 않으면 넓이 값이 padding값이 더해져서 내가 원하는 결과가 안 나오기 때문에 border-box로애초에 border까지의 사이즈로 맞춰줌 */
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  align-items: center; /* 화면이 간단하기 때문에 가로 세러 가운데 정렬만 하면 됨*/
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.bg {
+  /* background는 여러가지 속성들이 들어가 있음 */
+  /* 크게 image, repeat, position,size로 나눌 수 있음
+  image에는 url로 주소를 넣고 background는 기본으로 repeat이 되기 때문에 repeat하지 않을거라면 no-repeat으로 설정해줌
+  size를 cover로 설정했다는 건 높이 100%, 너비 100%를 커버한다는 것을 의미함*/
+  background-image: url('https://media.istockphoto.com/photos/portrait-of-a-siberian-tiger-picture-id1151170153');
+  /* no-repeat center/cover*/
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh; /*?*/
+  filter: blur(0px);
+  position: absolute; /*글자와 그림을 겹치게 해서 그림이 위로 뜬 상태(absolute의 기준이 없는 경우 화면이 기준이 된다)*/
+  z-index: -1; /*background그림을 z-index를 이용해서 겹쳐있는 글자 밑으로 그림을 내려줌*/
+}
+
+.loading-text {
+  color: white;
+  font-size: 50px;
+}
